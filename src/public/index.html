@@ -9,14 +9,14 @@
 
 <body>
     <h1>Let's Chat</h1>
-    <form>
+    <form id="chat-form" method="POST">
         <div>
-            <input type="text" id="text-input">
-        <button type="submit" id="submit-button" onclick="getMessage()">send</button>
+            <input type="text" name="text-input" id="text-input">
+        <input type="submit" id="submit-button">
         </div>
     </br>
         <div>
-            <input type='text' id='messages'>
+            <textarea name="msgs" id="messages" cols="30" rows="10" readonly></textarea>
         </div>
     </form>
 </body>
