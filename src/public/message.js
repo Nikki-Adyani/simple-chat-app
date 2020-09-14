@@ -10,11 +10,20 @@ formObj.addEventListener("submit", async function (event) {
     },
     body: JSON.stringify({ text }),
   });
-
-  const msgJson = await response.json();
-  document.getElementById("messages").value += msgJson.text;
-  document.getElementById("messages").value += "\r\n";
-//   msgJson.forEach((msg) => {
-//     document.getElementById("messages").value += msg.text;
-//   });
 });
+
+const intervalID = window.setInterval(showAllMessages, 1000);
+
+async function showAllMessages()
+{
+ const response = await fetch("/message", {
+    method: "GET",
+  });
+  const allMessages = await response.json();
+//   console.log(allMessages);
+document.getElementById("messages").value = '';
+  allMessages.forEach((msg) => {
+        document.getElementById("messages").value += msg.text;
+        document.getElementById("messages").value += "\r\n";
+      });
+}

@@ -13,10 +13,14 @@ app.get("/", (req, res) => {
 let messages = [];
 app.post("/send-message", (req, res) => {
     // console.log(req.body); 
-    messages.push(req.body);
+  messages.push(req.body);
     // res.send(messages);
-    res.send(req.body);
+    // res.send(req.body);
+    res.sendStatus(201);
   
+});
+app.get("/message", (req, res) => {
+  res.send(messages);
 });
 
 const port = process.env.PORT || 3000;
